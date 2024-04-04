@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit.components.v1 import html
 
+import streamlit_authenticator as stauth
+
 
 def make_intro():
     st.markdown(
@@ -39,3 +41,12 @@ def make_intro():
     
 def reset_conversation():
   st.session_state.messages = []
+  
+def get_authenticator():
+    authenticator = stauth.Authenticate(
+    st.secrets["credentials"].to_dict(),
+    st.secrets["cookie"]["name"],
+    st.secrets["cookie"]["key"],
+    st.secrets["cookie"]["expiry_days"],
+)
+    return authenticator
