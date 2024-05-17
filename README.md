@@ -1,4 +1,4 @@
-# Personal Assitant
+# Personal Assistant
 
 When you deploy the app in Streamlit, add the following secrets:
 
