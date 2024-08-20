@@ -26,14 +26,12 @@ if st.session_state["authentication_status"]:
             st.button("🔄", on_click=reset_conversation)
         st.title("Configuration")
 
+        all_models = client.models.list().data
+        all_gpt_models = [mod.id for mod in all_models if mod.id.startswith("gpt")]
+
         st.session_state["openai_model"] = st.selectbox(
             "Select a model",
-            [
-                "gpt-4o",
-                "gpt-4-turbo-preview",
-                "gpt-3.5-turbo",
-                "gpt-4",
-            ],
+            all_gpt_models,
         )
 
     for message in st.session_state.messages:
